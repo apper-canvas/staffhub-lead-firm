@@ -1,0 +1,206 @@
+[
+  {
+    "Id": 1,
+    "firstName": "Sarah",
+    "lastName": "Johnson",
+    "email": "sarah.johnson@company.com",
+    "phone": "(555) 123-4567",
+    "role": "Senior Software Engineer",
+    "department": "Engineering",
+    "startDate": "2022-01-15",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1494790108755-2616b95fc8c5?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Michael Johnson",
+      "relationship": "Spouse",
+      "phone": "(555) 123-4568"
+    }
+  },
+  {
+    "Id": 2,
+    "firstName": "Michael",
+    "lastName": "Chen",
+    "email": "michael.chen@company.com",
+    "phone": "(555) 234-5678",
+    "role": "Product Manager",
+    "department": "Product",
+    "startDate": "2021-08-20",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Lisa Chen",
+      "relationship": "Spouse",
+      "phone": "(555) 234-5679"
+    }
+  },
+  {
+    "Id": 3,
+    "firstName": "Emily",
+    "lastName": "Rodriguez",
+    "email": "emily.rodriguez@company.com",
+    "phone": "(555) 345-6789",
+    "role": "UX Designer",
+    "department": "Design",
+    "startDate": "2022-03-10",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Carlos Rodriguez",
+      "relationship": "Father",
+      "phone": "(555) 345-6790"
+    }
+  },
+  {
+    "Id": 4,
+    "firstName": "David",
+    "lastName": "Thompson",
+    "email": "david.thompson@company.com",
+    "phone": "(555) 456-7890",
+    "role": "Marketing Manager",
+    "department": "Marketing",
+    "startDate": "2021-11-05",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Jennifer Thompson",
+      "relationship": "Spouse",
+      "phone": "(555) 456-7891"
+    }
+  },
+  {
+    "Id": 5,
+    "firstName": "Jessica",
+    "lastName": "Wang",
+    "email": "jessica.wang@company.com",
+    "phone": "(555) 567-8901",
+    "role": "Data Scientist",
+    "department": "Engineering",
+    "startDate": "2022-05-18",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Robert Wang",
+      "relationship": "Father",
+      "phone": "(555) 567-8902"
+    }
+  },
+  {
+    "Id": 6,
+    "firstName": "Robert",
+    "lastName": "Garcia",
+    "email": "robert.garcia@company.com",
+    "phone": "(555) 678-9012",
+    "role": "Sales Representative",
+    "department": "Sales",
+    "startDate": "2021-09-12",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Maria Garcia",
+      "relationship": "Spouse",
+      "phone": "(555) 678-9013"
+    }
+  },
+  {
+    "Id": 7,
+    "firstName": "Amanda",
+    "lastName": "Brown",
+    "email": "amanda.brown@company.com",
+    "phone": "(555) 789-0123",
+    "role": "HR Manager",
+    "department": "Human Resources",
+    "startDate": "2020-12-01",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "James Brown",
+      "relationship": "Brother",
+      "phone": "(555) 789-0124"
+    }
+  },
+  {
+    "Id": 8,
+    "firstName": "James",
+    "lastName": "Wilson",
+    "email": "james.wilson@company.com",
+    "phone": "(555) 890-1234",
+    "role": "DevOps Engineer",
+    "department": "Engineering",
+    "startDate": "2022-02-28",
+    "status": "on-leave",
+    "photoUrl": "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Sarah Wilson",
+      "relationship": "Sister",
+      "phone": "(555) 890-1235"
+    }
+  },
+  {
+    "Id": 9,
+    "firstName": "Lisa",
+    "lastName": "Davis",
+    "email": "lisa.davis@company.com",
+    "phone": "(555) 901-2345",
+    "role": "Content Writer",
+    "department": "Marketing",
+    "startDate": "2021-07-14",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Mark Davis",
+      "relationship": "Spouse",
+      "phone": "(555) 901-2346"
+    }
+  },
+  {
+    "Id": 10,
+    "firstName": "Christopher",
+    "lastName": "Martinez",
+    "email": "chris.martinez@company.com",
+    "phone": "(555) 012-3456",
+    "role": "Financial Analyst",
+    "department": "Finance",
+    "startDate": "2022-04-06",
+    "status": "inactive",
+    "photoUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Patricia Martinez",
+      "relationship": "Mother",
+      "phone": "(555) 012-3457"
+    }
+  },
+  {
+    "Id": 11,
+    "firstName": "Rachel",
+    "lastName": "Kim",
+    "email": "rachel.kim@company.com",
+    "phone": "(555) 123-4567",
+    "role": "QA Engineer",
+    "department": "Engineering",
+    "startDate": "2021-10-22",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Daniel Kim",
+      "relationship": "Brother",
+      "phone": "(555) 123-4568"
+    }
+  },
+  {
+    "Id": 12,
+    "firstName": "Kevin",
+    "lastName": "Lee",
+    "email": "kevin.lee@company.com",
+    "phone": "(555) 234-5678",
+    "role": "Business Analyst",
+    "department": "Product",
+    "startDate": "2022-01-30",
+    "status": "active",
+    "photoUrl": "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face",
+    "emergencyContact": {
+      "name": "Helen Lee",
+      "relationship": "Spouse",
+      "phone": "(555) 234-5679"
+    }
+  }
+]
