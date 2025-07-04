@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "title": "Personal Information",
+    "description": "Complete your personal details and contact information",
+    "category": "personal",
+    "priority": "high",
+    "estimatedTime": "10 minutes",
+    "requiredDocuments": ["ID Copy", "Address Proof"],
+    "instructions": "Please provide accurate personal information and upload required documents.",
+    "status": "pending",
+    "order": 1
+  },
+  {
+    "Id": 2,
+    "title": "Emergency Contacts",
+    "description": "Add emergency contact information for safety purposes",
+    "category": "personal",
+    "priority": "high",
+    "estimatedTime": "5 minutes",
+    "requiredDocuments": [],
+    "instructions": "Provide at least two emergency contacts with their relationship to you.",
+    "status": "pending",
+    "order": 2
+  },
+  {
+    "Id": 3,
+    "title": "Banking Information",
+    "description": "Setup direct deposit and banking details",
+    "category": "financial",
+    "priority": "high",
+    "estimatedTime": "15 minutes",
+    "requiredDocuments": ["Bank Statement", "Void Check"],
+    "instructions": "Upload a recent bank statement or void check for direct deposit setup.",
+    "status": "pending",
+    "order": 3
+  },
+  {
+    "Id": 4,
+    "title": "IT Setup",
+    "description": "Configure your work accounts and access permissions",
+    "category": "technical",
+    "priority": "medium",
+    "estimatedTime": "20 minutes",
+    "requiredDocuments": [],
+    "instructions": "IT department will assist with account setup and equipment assignment.",
+    "status": "pending",
+    "order": 4
+  },
+  {
+    "Id": 5,
+    "title": "Orientation Meeting",
+    "description": "Attend new employee orientation session",
+    "category": "training",
+    "priority": "medium",
+    "estimatedTime": "60 minutes",
+    "requiredDocuments": [],
+    "instructions": "Schedule and attend your orientation meeting with HR.",
+    "status": "pending",
+    "order": 5
+  }
+]

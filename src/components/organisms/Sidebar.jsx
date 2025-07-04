@@ -3,13 +3,13 @@ import { motion } from 'framer-motion'
 import ApperIcon from '@/components/ApperIcon'
 
 const Sidebar = ({ isMobileMenuOpen, setMobileMenuOpen }) => {
-  const navItems = [
+const navItems = [
     { to: '/', label: 'Dashboard', icon: 'LayoutDashboard' },
     { to: '/employees', label: 'Employees', icon: 'Users' },
     { to: '/departments', label: 'Departments', icon: 'Building' },
     { to: '/attendance', label: 'Attendance', icon: 'Clock' },
+    { to: '/onboarding', label: 'Onboarding', icon: 'CheckSquare' },
   ]
-  
   const sidebarContent = (
     <div className="h-full flex flex-col">
       <div className="flex items-center space-x-3 p-6 border-b border-gray-200">

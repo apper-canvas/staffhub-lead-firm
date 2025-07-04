@@ -46,8 +46,64 @@ export const employeeService = {
     if (index === -1) {
       throw new Error('Employee not found')
     }
-    
-    const deletedEmployee = employees.splice(index, 1)[0]
+const deletedEmployee = employees.splice(index, 1)[0]
     return { ...deletedEmployee }
+  },
+
+  async getOnboardingById(employeeId) {
+    await delay(300)
+    const employee = employees.find(emp => emp.Id === employeeId)
+    if (!employee) {
+      throw new Error('Employee not found')
+    }
+    
+    // Return onboarding status or create default if not exists
+    if (!employee.onboarding) {
+      employee.onboarding = {
+        status: 'pending',
+        completedSteps: [],
+        startDate: new Date().toISOString(),
+        completionDate: null
+      }
+    }
+    
+    return { ...employee.onboarding, employeeId }
+  },
+
+  async updateOnboardingStatus(employeeId, stepId, status, documentUrl = null) {
+    await delay(350)
+    const employee = employees.find(emp => emp.Id === employeeId)
+    if (!employee) {
+      throw new Error('Employee not found')
+    }
+
+    if (!employee.onboarding) {
+      employee.onboarding = {
+        status: 'pending',
+        completedSteps: [],
+        startDate: new Date().toISOString(),
+        completionDate: null
+      }
+    }
+
+    const stepIndex = employee.onboarding.completedSteps.findIndex(step => step.stepId === stepId)
+    
+    if (stepIndex >= 0) {
+      employee.onboarding.completedSteps[stepIndex] = {
+        stepId,
+        status,
+        completedAt: new Date().toISOString(),
+        documentUrl
+      }
+    } else {
+      employee.onboarding.completedSteps.push({
+        stepId,
+        status,
+        completedAt: new Date().toISOString(),
+        documentUrl
+      })
+    }
+
+    return { ...employee.onboarding, employeeId }
   }
 }
