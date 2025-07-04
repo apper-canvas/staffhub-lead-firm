@@ -1,43 +1,137 @@
-import mockOnboardingSteps from '@/services/mockData/onboardingSteps.json'
-
-let onboardingSteps = [...mockOnboardingSteps]
-
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+import { toast } from 'react-toastify'
 
 export const onboardingService = {
   async getOnboardingSteps() {
-    await delay(300)
-    return [...onboardingSteps]
+    try {
+      const params = {
+        fields: [
+          { field: { "Name": "Name" } },
+          { field: { "Name": "title" } },
+          { field: { "Name": "description" } },
+          { field: { "Name": "status" } },
+          { field: { "Name": "due_date" } },
+          { field: { "Name": "assigned_to" } },
+          { field: { "Name": "document_url" } },
+          { field: { "Name": "Owner" } },
+          { field: { "Name": "Tags" } }
+        ]
+      }
+      
+      const { ApperClient } = window.ApperSDK
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      })
+      
+      const response = await apperClient.fetchRecords('onboarding_step', params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        return []
+      }
+      
+      return response.data || []
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching onboarding steps:", error?.response?.data?.message)
+      } else {
+        console.error(error.message)
+      }
+      return []
+    }
   },
 
   async getOnboardingStepById(id) {
-    await delay(200)
-    const step = onboardingSteps.find(step => step.Id === id)
-    if (!step) {
-      throw new Error('Onboarding step not found')
+    try {
+      const params = {
+        fields: [
+          { field: { "Name": "Name" } },
+          { field: { "Name": "title" } },
+          { field: { "Name": "description" } },
+          { field: { "Name": "status" } },
+          { field: { "Name": "due_date" } },
+          { field: { "Name": "assigned_to" } },
+          { field: { "Name": "document_url" } },
+          { field: { "Name": "Owner" } },
+          { field: { "Name": "Tags" } }
+        ]
+      }
+      
+      const { ApperClient } = window.ApperSDK
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      })
+      
+      const response = await apperClient.getRecordById('onboarding_step', id, params)
+      
+      if (!response || !response.data) {
+        return null
+      }
+      
+      return response.data
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error(`Error fetching onboarding step with ID ${id}:`, error?.response?.data?.message)
+      } else {
+        console.error(error.message)
+      }
+      return null
     }
-    return { ...step }
   },
 
   async updateStepStatus(id, status) {
-    await delay(250)
-    const stepIndex = onboardingSteps.findIndex(step => step.Id === id)
-    if (stepIndex === -1) {
-      throw new Error('Onboarding step not found')
+    try {
+      const params = {
+        records: [{
+          Id: id,
+          status: status
+        }]
+      }
+      
+      const { ApperClient } = window.ApperSDK
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      })
+      
+      const response = await apperClient.updateRecord('onboarding_step', params)
+      
+      if (!response.success) {
+        console.error(response.message)
+        toast.error(response.message)
+        return null
+      }
+      
+      if (response.results) {
+        const successfulUpdates = response.results.filter(result => result.success)
+        const failedUpdates = response.results.filter(result => !result.success)
+        
+        if (failedUpdates.length > 0) {
+          console.error(`Failed to update ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`)
+          
+          failedUpdates.forEach(record => {
+            record.errors?.forEach(error => {
+              toast.error(`${error.fieldLabel}: ${error.message}`)
+            })
+            if (record.message) toast.error(record.message)
+          })
+        }
+        
+        return successfulUpdates.length > 0 ? successfulUpdates[0].data : null
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error updating onboarding step status:", error?.response?.data?.message)
+      } else {
+        console.error(error.message)
+      }
+      return null
     }
-    
-    onboardingSteps[stepIndex] = { 
-      ...onboardingSteps[stepIndex], 
-      status,
-      completedAt: status === 'completed' ? new Date().toISOString() : null
-    }
-    
-    return { ...onboardingSteps[stepIndex] }
   },
 
   async uploadDocument(stepId, file) {
-    await delay(500)
-    
     // Validate file type
     const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'image/jpeg', 'image/png']
     if (!allowedTypes.includes(file.type)) {
@@ -62,30 +156,37 @@ export const onboardingService = {
   },
 
   async getEmployeeOnboardingProgress(employeeId) {
-    await delay(300)
-    
-    // Get all steps and simulate progress
-    const allSteps = [...onboardingSteps]
-    const completedSteps = allSteps.filter(step => Math.random() > 0.6).map(step => ({
-      ...step,
-      status: 'completed',
-      completedAt: new Date().toISOString()
-    }))
-    
-    const totalSteps = allSteps.length
-    const completed = completedSteps.length
-    const progress = Math.round((completed / totalSteps) * 100)
-    
-    return {
-      employeeId,
-      totalSteps,
-      completedSteps: completed,
-      progress,
-      status: completed === totalSteps ? 'completed' : completed > 0 ? 'in_progress' : 'pending',
-      steps: allSteps.map(step => ({
-        ...step,
-        status: completedSteps.find(cs => cs.Id === step.Id) ? 'completed' : 'pending'
-      }))
+    try {
+      const allSteps = await this.getOnboardingSteps()
+      
+      // Simulate progress based on step status
+      const completedSteps = allSteps.filter(step => step.status === 'completed')
+      const totalSteps = allSteps.length
+      const completed = completedSteps.length
+      const progress = totalSteps > 0 ? Math.round((completed / totalSteps) * 100) : 0
+      
+      return {
+        employeeId,
+        totalSteps,
+        completedSteps: completed,
+        progress,
+        status: completed === totalSteps ? 'completed' : completed > 0 ? 'in_progress' : 'pending',
+        steps: allSteps
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching employee onboarding progress:", error?.response?.data?.message)
+      } else {
+        console.error(error.message)
+      }
+      return {
+        employeeId,
+        totalSteps: 0,
+        completedSteps: 0,
+        progress: 0,
+        status: 'pending',
+        steps: []
+      }
     }
   }
 }
